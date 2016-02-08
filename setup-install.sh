@@ -29,7 +29,7 @@ sudo apt-get -q -y install ros-indigo-desktop python-prettytable
 sudo rosdep init
 rosdep update
 echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
-source ~/.bashrc
+source $HOME/.bashrc
 sudo apt-get -q -y install python-wstool python-rosinstall-generator python-catkin-tools ros-indigo-gazebo6-ros
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws
@@ -39,7 +39,7 @@ wget https://raw.githubusercontent.com/darknight-007/mavros/master/mavros.rosins
 wstool merge -t src mavros.rosinstall
 wstool update -t src
 rosdep install --from-paths src --ignore-src --rosdistro indigo -y
-source ~/.bashrc
+source $HOME/.bashrc
 catkin build
 date >> install.log
 
