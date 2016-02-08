@@ -24,7 +24,7 @@ sudo sh /tmp/gazebo6_install.sh
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0xB01FA116
 sudo apt-get update
-sudo apt-get -q -y install ros-indigo-desktop
+sudo apt-get -q -y install ros-indigo-desktop python-prettytable
 sudo rosdep init
 rosdep update
 echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
@@ -38,11 +38,7 @@ wget https://raw.githubusercontent.com/darknight-007/mavros/master/mavros.rosins
 wstool merge -t src mavros.rosinstall
 wstool update -t src
 rosdep install --from-paths src --ignore-src --rosdistro indigo -y
-roscd catkin
-cd ~/catkin_ws
+source ~/.bashrc
 catkin build
-echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
-rm mavros.rosinstall
-sudo apt-get -q -y install vim python-prettytable
 date >> install.log
 
