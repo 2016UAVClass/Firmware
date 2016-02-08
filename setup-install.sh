@@ -1,9 +1,8 @@
 #!/bin/bash
 # For automated install, set permissions to avoid sudo/passwd. On standalone VM, run sudo visudo and add this line to your sudoers file:
 # Defaults        !tty_tickets
-
-Defaults        !tty_tickets
 export DEBIAN_FRONTEND=noninteractive
+
 sudo usermod -a -G dialout $USER
 sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
 sudo apt-get update
@@ -42,7 +41,6 @@ wstool update -t src
 rosdep install --from-paths src --ignore-src --rosdistro indigo -y
 catkin build
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
-sudo apt-get -q -y install python-prettytable
-
-
+rm mavros.rosinstall
+sudo apt-get -q -y install vim python-prettytable
 
