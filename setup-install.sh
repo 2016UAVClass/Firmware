@@ -1,6 +1,7 @@
 #!/bin/bash
 # For automated install, set permissions to avoid sudo/passwd. On standalone VM, run sudo visudo and add the following line to your sudoers file:
 # Defaults        !tty_tickets
+
 date >> install.log
 export DEBIAN_FRONTEND=noninteractive
 
