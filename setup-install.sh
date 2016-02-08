@@ -17,7 +17,9 @@ git clone https://github.com/darknight-007/Firmware.git
 cd Firmware
 make px4fmu-v2_default
 cd ~/
-wget -O /tmp/gazebo6_install.sh http://osrf-distributions.s3.amazonaws.com/gazebo/gazebo6_install.sh; sudo sh /tmp/gazebo6_install.sh
+wget -O /tmp/gazebo6_install.sh http://osrf-distributions.s3.amazonaws.com/gazebo/gazebo6_install.sh 
+sed -i 's/apt-get install/apt-get -q -y install/g' /tmp/gazebo6_install.sh
+sudo sh /tmp/gazebo6_install.sh
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0xB01FA116
 sudo apt-get update
@@ -35,6 +37,8 @@ wget https://raw.githubusercontent.com/darknight-007/mavros/master/mavros.rosins
 wstool merge -t src mavros.rosinstall
 wstool update -t src
 rosdep install --from-paths src --ignore-src --rosdistro indigo -y
+roscd catkin
+cd ~/catkin_ws
 catkin build
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 rm mavros.rosinstall
