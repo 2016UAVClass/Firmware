@@ -1,5 +1,5 @@
 #!/bin/bash
-# For automated install, set permissions to avoid sudo/passwd. On standalone VM, run sudo visudo and add this line to your sudoers file:
+# For automated install, set permissions to avoid sudo/passwd. On standalone VM, run sudo visudo and add the following line to your sudoers file:
 # Defaults        !tty_tickets
 date >> install.log
 export DEBIAN_FRONTEND=noninteractive
@@ -29,7 +29,7 @@ sudo rosdep init
 rosdep update
 echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
 source ~/.bashrc
-sudo apt-get -q -y install python-wstool python-rosinstall-generator python-catkin-tools
+sudo apt-get -q -y install python-wstool python-rosinstall-generator python-catkin-tools ros-indigo-gazebo6-ros
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws
 catkin init
