@@ -1,6 +1,7 @@
 #!/bin/bash
 # For automated install, set permissions to avoid sudo/passwd. On standalone VM, run sudo visudo and add this line to your sudoers file:
 # Defaults        !tty_tickets
+date >> install.log
 export DEBIAN_FRONTEND=noninteractive
 
 sudo usermod -a -G dialout $USER
@@ -43,4 +44,5 @@ catkin build
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 rm mavros.rosinstall
 sudo apt-get -q -y install vim python-prettytable
+date >> install.log
 
