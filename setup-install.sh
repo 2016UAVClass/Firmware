@@ -3,7 +3,7 @@
 # Defaults        !tty_tickets
 
 wget -O /tmp/env-setup.sh https://raw.githubusercontent.com/darknight-007/Firmware/master/env-setup.sh
-sh env-setup.sh
+sh /tmp/env-setup.sh
 source $HOME/.bashrc
 
 sudo usermod -a -G dialout $USER
