@@ -3,7 +3,7 @@
 # Defaults        !tty_tickets
 
 date >> install.log
-export DEBIAN_FRONTEND=noninteractive
+
 
 sudo usermod -a -G dialout $USER
 sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
@@ -28,15 +28,22 @@ sudo apt-get update
 sudo apt-get -q -y install ros-indigo-desktop python-prettytable
 sudo rosdep init
 rosdep update
-echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
 
-# Set the plugin path so Gazebo finds our model and sim
-export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/Build
-# Set the model path so Gazebo finds the airframes
-export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/models
 
-wget -O /tmp/setup-mavros.sh https://raw.githubusercontent.com/darknight-007/Firmware/master/setup-mavros.sh
-sh /tmp/setup-mavros.sh
+source $HOME/.bashrc
+
+sudo apt-get -q -y install python-wstool python-rosinstall-generator python-catkin-tools ros-indigo-gazebo6-ros
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws
+catkin init
+wstool init ~/catkin_ws/src
+wget https://raw.githubusercontent.com/darknight-007/mavros/master/mavros.rosinstall
+wstool merge -t src mavros.rosinstall
+wstool update -t src
+rosdep install --from-paths src --ignore-src --rosdistro indigo -y
+source $HOME/.bashrc
+catkin build
+
 
 
 
