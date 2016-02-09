@@ -35,7 +35,7 @@ export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:$HOME/src/Firmware/Tools/sitl_ga
 # Set the model path so Gazebo finds the airframes
 export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/models
 
-wget -O /tmp/setup-mavros.sh https://raw.githubusercontent.com/darknight-007/Firmware/master/setup-install.sh
+wget -O /tmp/setup-mavros.sh https://raw.githubusercontent.com/darknight-007/Firmware/master/setup-mavros.sh
 sh /tmp/setup-mavros.sh
 
 

@@ -1,5 +1,4 @@
 #!/bin/bash
-
 export DEBIAN_FRONTEND=noninteractive
 source $HOME/.bashrc
 sudo apt-get -q -y install python-wstool python-rosinstall-generator python-catkin-tools ros-indigo-gazebo6-ros
