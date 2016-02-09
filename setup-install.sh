@@ -1,10 +1,7 @@
 #!/bin/bash
 # For automated install, set permissions to avoid sudo/passwd. On standalone VM, run sudo visudo and add the following line to your sudoers file:
 # Defaults        !tty_tickets
-
-wget -O /tmp/env-setup.sh https://raw.githubusercontent.com/darknight-007/Firmware/master/env-setup.sh
-sh /tmp/env-setup.sh
-source ~/.bashrc
+export DEBIAN_FRONTEND=noninteractive
 
 sudo usermod -a -G dialout $USER
 sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
@@ -29,7 +26,7 @@ sudo apt-get update
 sudo apt-get -q -y install ros-indigo-desktop python-prettytable
 sudo rosdep init
 rosdep update
-
+source /opt/ros/indigo/setup.bash
 sudo apt-get -q -y install python-wstool python-rosinstall-generator python-catkin-tools ros-indigo-gazebo6-ros
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws
@@ -40,6 +37,11 @@ wstool merge -t src mavros.rosinstall
 wstool update -t src
 rosdep install --from-paths src --ignore-src --rosdistro indigo -y
 catkin build
+echo "export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/Build" >> ~/.bashrc
+echo "export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/models" >> ~/.bashrc
+echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
+echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+
 
 
 
