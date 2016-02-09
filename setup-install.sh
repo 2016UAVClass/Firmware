@@ -4,7 +4,7 @@
 
 wget -O /tmp/env-setup.sh https://raw.githubusercontent.com/darknight-007/Firmware/master/env-setup.sh
 sh /tmp/env-setup.sh
-source $HOME/.bashrc
+source ~/.bashrc
 
 sudo usermod -a -G dialout $USER
 sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
