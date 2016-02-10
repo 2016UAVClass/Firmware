@@ -3,6 +3,7 @@
 # Defaults        !tty_tickets
 export DEBIAN_FRONTEND=noninteractive
 
+#PX4 MIDDLEWARE and SITL STACK
 sudo usermod -a -G dialout $USER
 sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
 sudo apt-get update
@@ -17,6 +18,8 @@ git clone https://github.com/darknight-007/Firmware.git
 cd Firmware
 make px4fmu-v2_default
 cd ~/
+
+#GAZEBO 6
 wget -O /tmp/gazebo6_install.sh http://osrf-distributions.s3.amazonaws.com/gazebo/gazebo6_install.sh 
 sed -i 's/apt-get install/apt-get -q -y install/g' /tmp/gazebo6_install.sh
 sudo sh /tmp/gazebo6_install.sh
@@ -27,6 +30,8 @@ sudo apt-get -q -y install ros-indigo-desktop python-prettytable
 sudo rosdep init
 rosdep update
 source /opt/ros/indigo/setup.bash
+
+# MAVROS
 sudo apt-get -q -y install python-wstool python-rosinstall-generator python-catkin-tools ros-indigo-gazebo6-ros
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws
@@ -37,12 +42,10 @@ wstool merge -t src mavros.rosinstall
 wstool update -t src
 rosdep install --from-paths src --ignore-src --rosdistro indigo -y
 catkin build
+
+# GAZEBO MODEL FOLDER 
 echo "export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/Build" >> ~/.bashrc
 echo "export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/models" >> ~/.bashrc
 echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
-
-
-
-
 
