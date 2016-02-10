@@ -39,7 +39,7 @@ mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws
 catkin init
 wstool init ~/catkin_ws/src
-wget https://raw.githubusercontent.com/darknight-007/mavros/master/mavros.rosinstall
+wget https://raw.githubusercontent.com/darknight-007/mavros-nsf-student-competition/master/mavros.rosinstall
 wstool merge -t src mavros.rosinstall
 wstool update -t src
 rosdep install --from-paths src --ignore-src --rosdistro indigo -y
