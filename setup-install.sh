@@ -1,9 +1,10 @@
 #!/bin/bash
-# For automated install, set permissions to avoid sudo/passwd. On standalone VM, run sudo visudo and add the following line to your sudoers file:
+# For automated install, set permissions to avoid sudo/passwd. On standalone VM, run sudo visudo and add the following line to your sudoers file (or use sudo visudo to enter the editor):
 # Defaults        !tty_tickets
+
 export DEBIAN_FRONTEND=noninteractive
 
-#PX4 MIDDLEWARE and SITL STACK
+#PX4 MIDDLEWARE AND SITL STACK
 sudo usermod -a -G dialout $USER
 sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
 sudo apt-get update
@@ -16,6 +17,7 @@ mkdir -p ~/src
 cd ~/src
 git clone https://github.com/darknight-007/Firmware.git
 cd Firmware
+make 
 make px4fmu-v2_default
 cd ~/
 
@@ -46,6 +48,8 @@ catkin build
 # GAZEBO MODEL FOLDER 
 echo "export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/Build" >> ~/.bashrc
 echo "export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/models" >> ~/.bashrc
+
+# UPDATE .BASHRC
 echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 
