@@ -59,6 +59,6 @@ echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 
 mkdir -p ~/.config/ros.org/
-cp rqt_gui.ini ~/.config/ros.org/
+cp ~/src/Firmware/rqt_gui.ini ~/.config/ros.org/
  
 
