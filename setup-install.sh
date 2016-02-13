@@ -15,14 +15,8 @@ sudo apt-get update
 sudo apt-get -q -y install python-serial openocd flex bison libncurses5-dev autoconf texinfo build-essential libftdi-dev libtool zlib1g-dev python-empy gcc-arm-none-eabi -y
 mkdir -p ~/src
 cd ~/src
-git clone https://github.com/darknight-007/Firmware.git
+git clone -b "devel" https://github.com/darknight-007/Firmware.git
 cd Firmware
-wget https://cmake.org/files/v3.3/cmake-3.3.2-Linux-x86_64.sh
-chmod +x cmake-3.3.2-Linux-x86_64.sh
-sudo mkdir /opt/cmake-3.3.2)
-sudo ./cmake-3.3.2-Linux-x86_64.sh --prefix=/opt/cmake-3.3.2 --exclude-subdir
-rm cmake-3.3.2-Linux-x86_64.sh
-make 
 make px4fmu-v2_default
 cd ~/
 
