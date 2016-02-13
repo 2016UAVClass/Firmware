@@ -38,28 +38,16 @@ sudo rosdep init
 rosdep update
 source /opt/ros/indigo/setup.bash
 
-# MAVROS
-sudo apt-get -q -y install python-wstool python-rosinstall-generator python-catkin-tools ros-indigo-gazebo6-ros
-mkdir -p ~/catkin_ws/src
-cd ~/catkin_ws
-catkin init
-wstool init ~/catkin_ws/src
-wget https://raw.githubusercontent.com/darknight-007/mavros-nsf-student-competition/master/mavros.rosinstall
-wstool merge -t src mavros.rosinstall
-wstool update -t src
-rosdep install --from-paths src --ignore-src --rosdistro indigo -y
-catkin build
-
 # GAZEBO MODEL FOLDER 
 echo "export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/Build" >> ~/.bashrc
 echo "export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/models" >> ~/.bashrc
 
 # UPDATE .BASHRC
 echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
-echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
-
+source ~/.bashrc
 mkdir -p ~/.config/ros.org/
 cp ~/src/Firmware/rqt_gui.ini ~/.config/ros.org/
  
 wget -O /tmp/setup-mavros.sh https://raw.githubusercontent.com/darknight-007/Firmware/master/setup-mavros.sh
 bash /tmp/setup-mavros.sh 
+
