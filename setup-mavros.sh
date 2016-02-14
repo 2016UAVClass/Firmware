@@ -12,6 +12,5 @@ wstool update -t src
 rosdep install --from-paths src --ignore-src --rosdistro indigo -y
 catkin build
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
-source ~/.bashrc
 
 
