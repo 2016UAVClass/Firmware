@@ -2,6 +2,7 @@
 
 # MAVROS
 sudo apt-get -q -y install python-wstool python-rosinstall-generator python-catkin-tools ros-indigo-gazebo6-ros ros-indigo-gazebo6-plugins 
+source /opt/ros/indigo/setup.bash
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws
 catkin init

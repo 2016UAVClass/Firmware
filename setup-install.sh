@@ -31,6 +31,7 @@ sudo apt-get -q -y install ros-indigo-desktop python-prettytable
 sudo rosdep init
 rosdep update
 echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
+source /opt/ros/indigo/setup.bash
 
 # GAZEBO MODEL FOLDER 
 echo "export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/Build" >> ~/.bashrc
