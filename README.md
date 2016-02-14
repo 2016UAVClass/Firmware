@@ -1,3 +1,5 @@
+## NSF Student Competition SITL Gazebo test environment 
+
 To install on a fresh Ubuntu VM, open a terminal and go through the following steps.
 
 * wget https://raw.githubusercontent.com/darknight-007/Firmware/master/setup-install.sh
@@ -5,6 +7,7 @@ To install on a fresh Ubuntu VM, open a terminal and go through the following st
 
 (you will be asked for your password in the beginning)
 
+### Without camera plugins
 Once installation is over, 
 * cd ~/src/Firmware
 * make posix_sitl_default gazebo 
@@ -19,13 +22,16 @@ and, in yet another terminal
 * cd ~/catkin_ws/src/mavros/test_mavros/scripts
 * python mavros_wpmission_test.py
 
-You can look at the list of mavros topics,
+You will now see the UAV takeoff, fly a mission, and land again. 
+
+On a terminal, you can look at the list of mavros topics,
 * rostopic list
 
 And maybe check out the state of the FMU, 
 * rostopic echo /mavros/state
 
 
+### With camera plugins
 <b>GAZEBO ROS</b><br/>
 To acquire gazebo camera pugin data, we need to start the SITL stack with no_sim=1. In terminal 1, 
 * make no_sim=1 posix_sitl_default gazebo
