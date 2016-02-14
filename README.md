@@ -1,3 +1,51 @@
+To install on a fresh Ubuntu VM, open a terminal and go through the following steps.
+
+wget https://raw.githubusercontent.com/darknight-007/Firmware/master/setup-install.sh
+bash setup-install.sh
+
+(you will be asked for your password in the beginning)
+
+Once installation is over, 
+cd ~/src/Firmware
+make posix_sitl_default gazebo 
+
+It will take a bit the first time you run this. Also, if the build fails, try again. It seems to fail the first time (to be fixed). 
+You should see a Gazebo window with the F450 at the center. 
+
+In another terminal, run 
+roslaunch mavros px4.launch fcu_url:="udp://:14540@127.0.0.1:14557"
+
+and, in yet another terminal 
+cd ~/catkin_ws/src/mavros/test_mavros/scripts
+python mavros_wpmission_test.py
+
+
+GAZEBO ROS
+To acquire gazebo camera pugin data, we need to start the SITL stack with no_sim=1. In terminal 1, 
+make no_sim=1 posix_sitl_default gazebo
+
+In a bit, you should see the ASCII PX4 art, and a message 
+"Waiting for initial data on UDP. Please start the flight simulator to proceed.."
+
+At this time open another terminal, and use 
+roslaunch mavros gazebo-mavros.launch gui:=true
+
+You should now see both the Gazebo client, and an RQT window showing the camera inage panels, and a line plot for UAV height. 
+You will have to click the refresh buttons for the camera image view panels, and choose the front and down camera respectively from the dropdown. The height plot should start updating on its own.
+
+https://www.dropbox.com/s/qkgvp5y06eu74kw/Screenshot%202016-02-13%2021.30.38.png?dl=0
+
+The next step is the same as non gazebo_ros mode. That is, in another terminal 
+cd ~/catkin_ws/src/mavros/test_mavros/scripts
+python mavros_wpmission_test.py
+
+You should now see the UAV take off, and the camera images update accordingly. 
+
+*** It's advised that you close gazebo client at this time so that the controller simultion has maximum fidelity.
+*** do not use gui:=true when starting the gazebo-mavros.launch file for actual simulation use.
+
+
+------ UPSTREAM INFO-----
 ## PX4 Flight Core and PX4 Middleware ##
 
 [![Build Status](https://travis-ci.org/PX4/Firmware.svg?branch=master)](https://travis-ci.org/PX4/Firmware) [![Coverity Scan](https://scan.coverity.com/projects/3966/badge.svg?flat=1)](https://scan.coverity.com/projects/3966?tab=overview)
