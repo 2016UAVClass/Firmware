@@ -17,7 +17,6 @@ mkdir -p ~/src
 cd ~/src
 git clone -b "devel" https://github.com/darknight-007/Firmware.git
 cd Firmware
-make px4fmu-v2_default
 cd ~/
 
 #GAZEBO 6
@@ -30,18 +29,16 @@ sudo apt-get update
 sudo apt-get -q -y install ros-indigo-desktop python-prettytable
 sudo rosdep init
 rosdep update
-source /opt/ros/indigo/setup.bash
+echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
 
 # GAZEBO MODEL FOLDER 
 echo "export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/Build" >> ~/.bashrc
 echo "export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/models" >> ~/.bashrc
 
 # UPDATE .BASHRC
-echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 mkdir -p ~/.config/ros.org/
 cp ~/src/Firmware/rqt_gui.ini ~/.config/ros.org/
- 
 wget -O /tmp/setup-mavros.sh https://raw.githubusercontent.com/darknight-007/Firmware/devel/setup-mavros.sh
 bash /tmp/setup-mavros.sh 
 
