@@ -17,6 +17,7 @@ mkdir -p ~/src
 cd ~/src
 git clone -b "devel" https://github.com/darknight-007/Firmware.git
 cd Firmware
+make
 cd ~/
 
 #GAZEBO 6
@@ -35,7 +36,6 @@ echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
 echo "export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/Build" >> ~/.bashrc
 echo "export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/src/Firmware/Tools/sitl_gazebo/models" >> ~/.bashrc
 
-# UPDATE .BASHRC
 source ~/.bashrc
 mkdir -p ~/.config/ros.org/
 cp ~/src/Firmware/rqt_gui.ini ~/.config/ros.org/
