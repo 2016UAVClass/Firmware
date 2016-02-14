@@ -39,8 +39,6 @@ At this time open another terminal, and use
 You should now see both the Gazebo client, and an RQT window showing the camera inage panels, and a line plot for UAV height. 
 You will have to click the refresh buttons for the camera image view panels, and choose the front and down camera respectively from the dropdown. The height plot should start updating on its own.
 
-https://www.dropbox.com/s/qkgvp5y06eu74kw/Screenshot%202016-02-13%2021.30.38.png?dl=0
-
 The next step is the same as non gazebo_ros mode. That is, in another terminal 
 * cd ~/catkin_ws/src/mavros/test_mavros/scripts
 * python mavros_wpmission_test.py
