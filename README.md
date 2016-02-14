@@ -9,15 +9,21 @@ Once installation is over,
 * cd ~/src/Firmware
 * make posix_sitl_default gazebo 
 
-It will take a bit the first time you run this. Also, if the build fails, try again. It seems to fail the first time (to be fixed). 
-You should see a Gazebo window with the F450 at the center. 
+It will take a bit the first time you run this. Also, if the build fails, try again. 
+You should see a Gazebo client window with the F450 at the center. 
 
-In another terminal, run 
+In another terminal, run the mavros node
 * roslaunch mavros px4.launch fcu_url:="udp://:14540@127.0.0.1:14557"
 
 and, in yet another terminal 
 * cd ~/catkin_ws/src/mavros/test_mavros/scripts
 * python mavros_wpmission_test.py
+
+You can look at the list of mavros topics,
+* rostopic list
+
+And maybe check out the state of the FMU, 
+* rostopic echo /mavros/state
 
 
 <b>GAZEBO ROS</b><br/>
