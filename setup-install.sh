@@ -39,6 +39,6 @@ echo "export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/src/Firmware/Tools/sit
 source ~/.bashrc
 mkdir -p ~/.config/ros.org/
 cp ~/src/Firmware/rqt_gui.ini ~/.config/ros.org/
-wget -O /tmp/setup-mavros.sh https://raw.githubusercontent.com/darknight-007/Firmware/devel/setup-mavros.sh
+wget -O /tmp/setup-mavros.sh https://raw.githubusercontent.com/darknight-007/Firmware/master/setup-mavros.sh
 bash /tmp/setup-mavros.sh 
 
