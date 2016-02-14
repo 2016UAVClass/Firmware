@@ -20,7 +20,7 @@ and, in yet another terminal
 * python mavros_wpmission_test.py
 
 
-<b>GAZEBO ROS</b>
+<b>GAZEBO ROS</b><br/>
 To acquire gazebo camera pugin data, we need to start the SITL stack with no_sim=1. In terminal 1, 
 * make no_sim=1 posix_sitl_default gazebo
 
@@ -41,7 +41,7 @@ The next step is the same as non gazebo_ros mode. That is, in another terminal
 
 You should now see the UAV take off, and the camera images update accordingly. 
 
-*** It's advised that you close gazebo client at this time so that the controller simultion has maximum fidelity.
+*** It's advised that you close gazebo client at this time so that the controller simultion has maximum fidelity. <br/>
 *** do not use gui:=true when starting the gazebo-mavros.launch file for actual simulation use.
 
 
