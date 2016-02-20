@@ -51,7 +51,7 @@ The next step is the same as non gazebo_ros mode. That is, in another terminal
 
 You should now see the UAV take off, and the camera images update accordingly. 
 
-*** It's advised that you close gazebo client at this time so that the controller simultion has maximum fidelity. <br/>
+*** It's advised that you close gazebo client at this time so that the controller simulation has maximum fidelity. <br/>
 *** Do not use gui:=true when starting the gazebo-mavros.launch file for actual simulation use.
 
 
