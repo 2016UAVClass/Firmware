@@ -74,7 +74,7 @@ then
 		cd Tools/sitl_gazebo/Build
 		cmake -Wno-dev ..
 		make -j4
-		gzserver --verbose ../worlds/${model}.world &
+		gzserver --verbose ../worlds/trapbelowuav.world &
 		SIM_PID=`echo $!`
 		gzclient --verbose &
 		GUI_PID=`echo $!`
